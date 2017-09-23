@@ -87,12 +87,10 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                     .setContentTitle(title)
                     .setContentText(messageBody)
-		    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
-                    .setContentIntent(pendingIntent)
-                    .setLights(0xff00ff00, 300, 100);
+                    .setContentIntent(pendingIntent);
 
             int resID = getResources().getIdentifier("notification_icon", "drawable", getPackageName());
             if (resID != 0) {
@@ -122,7 +120,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
             bundle.putBoolean("tap", false);
             bundle.putString("title", title);
             bundle.putString("body", messageBody);
-            FirebasePlugin.sendNotification(bundle);
+            FirebasePlugin.sendNotification(bundle, this.getApplicationContext());
         }
     }
 }
