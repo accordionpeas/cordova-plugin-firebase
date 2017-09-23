@@ -91,7 +91,8 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                     .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
                     .setAutoCancel(true)
                     .setSound(defaultSoundUri)
-                    .setContentIntent(pendingIntent);
+                    .setContentIntent(pendingIntent)
+                    .setLights(0xff00ff00, 300, 100);
 
             int resID = getResources().getIdentifier("notification_icon", "drawable", getPackageName());
             if (resID != 0) {
